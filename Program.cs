@@ -59,28 +59,75 @@ using System.Security.Cryptography;
 // };
 // Console.WriteLine(result1);
 //-----Second Exercise------------------//
-Console.WriteLine("8 times table using for");
-for (int i = 1; i <= 10; i++)
+// Console.WriteLine("8 times table using for");
+// for (int i = 1; i <= 10; i++)
+// {
+//     Console.WriteLine($"{i} * 8 = {i * 8}");
+// }
+// Console.WriteLine("8 times table using while");
+// int j = 1;
+// while (j <= 10)
+// {
+//     Console.WriteLine($"{j} * 8 = {j * 8}");
+//     j++;
+// }
+// Console.WriteLine("8 times table using do while");
+// int k = 1;
+// do
+// {
+//     Console.WriteLine($"{k} * 8 = {k * 8}");
+//     k++;
+// } while (k <= 10);
+// Console.WriteLine("8 times table using forEach");
+// var tables = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+// foreach (var item in tables)
+// {
+//     Console.WriteLine($"{item} * 8 = {item * 8}");
+// }
+//<<<<<------------------------Third Exercise---------------->
+// void IncrementAges(int[] ages)
+// {
+//     for (var i = 0; i < ages.Length; i++)
+//     {
+//         ages[i]++;
+//     }
+// }
+
+// var ages = new[] { 25, 30, 50 };
+// IncrementAges(ages);
+// Console.WriteLine(string.Join(", ", ages));
+
+// Console.WriteLine("What is your age?");
+// var response = Console.ReadLine();
+// var responseIsValidNumber = int.TryParse(response, out var age);
+
+// if (responseIsValidNumber)
+// {
+//     Console.WriteLine($"In 5 years, you will be {age + 5}.");
+// }
+// else
+// {
+//     Console.WriteLine($"Sorry, I didn't understand your response.");
+// }
+Animal? GetPetType()
 {
-    Console.WriteLine($"{i} * 8 = {i * 8}");
+    Console.WriteLine("What type of animal is your pet?");
+    var response = Console.ReadLine() ?? "";
+    Enum.TryParse(typeof(Animal), response, out var petType);
+    Console.WriteLine(typeof(Animal));
+    return (Animal?)petType;
 }
-Console.WriteLine("8 times table using while");
-int j = 1;
-while (j <= 10)
+
+Console.WriteLine("Welcome to the veterinary centre!");
+Console.WriteLine(
+    GetPetType() != null
+        ? "Great, please come through."
+        : "Sorry, we only work with dogs, cats and fish."
+);
+
+enum Animal
 {
-    Console.WriteLine($"{j} * 8 = {j * 8}");
-    j++;
-}
-Console.WriteLine("8 times table using do while");
-int k = 1;
-do
-{
-    Console.WriteLine($"{k} * 8 = {k * 8}");
-    k++;
-} while (k <= 10);
-Console.WriteLine("8 times table using forEach");
-var tables = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-foreach (var item in tables)
-{
-    Console.WriteLine($"{item} * 8 = {item * 8}");
+    Dog,
+    Cat,
+    Fish,
 }
